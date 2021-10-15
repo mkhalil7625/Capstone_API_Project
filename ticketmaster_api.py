@@ -40,6 +40,6 @@ def get_events(artist):
     next_page_path = first_page['_links']['next']['href']
 
     if next_page_path:
-        get_json_data
-
+        # get_json_data(base_url + next_page_path)
+        pass
 
