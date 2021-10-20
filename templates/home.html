@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <section>
+        <h1>Search for your favorite artists or bands</h1>
+        <form class="form" action="/get-artist" method="GET">
+            <label class="form-label" for="search">Search</label>
+            <textarea name="search" id="search" class="form__textarea"></textarea>
+            <button type="submit" class="form__submit">Search</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
