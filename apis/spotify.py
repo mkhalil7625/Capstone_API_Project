@@ -54,7 +54,8 @@ def main():
     songs_data = get_tracks(BASE_URL, headers, artist_id)
 
     # get top 5 artist tracks
-    top_tracks(songs_data, 5)
+    top_tracks = get_top_tracks(songs_data)
+    return top_tracks
 
 
 def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
@@ -89,12 +90,13 @@ def get_tracks(BASE_URL, headers, artist_id):
     # print(songs_data)
 
 
-def top_tracks(songs_data, limit):
+def get_top_tracks(songs_data):
     top_tracks = songs_data['tracks']
 
-    # get 5 most popular songs
-    for track in top_tracks[:limit]:
-        print(track['name'])
+    # # get 5 most popular songs
+    # for track in top_tracks[:limit]:
+    #     print(track['name'])
+    return top_tracks
 
 
 main()
