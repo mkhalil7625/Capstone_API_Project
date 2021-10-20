@@ -43,6 +43,8 @@ def main():
     """
     artist_data = find_artist(BASE_URL, headers, artist_name)
 
+    artist_url = get_artist_url(artist_data)
+
     genres = artist_data['artists']['items'][0]['genres']
     print(f'Artist genres: {genres}')
 
@@ -82,6 +84,11 @@ def find_artist(BASE_URL, headers, artist_name):
     return artist_data
 
 
+def get_artist_url(artist_data):
+    print(artist_data['artists']['items'][0]['external_urls']['spotify'])
+    return artist_data['artists']['items'][0]['external_urls']['spotify']
+
+
 def get_tracks(BASE_URL, headers, artist_id):
     songs_request = requests.get(BASE_URL + 'artists/' + artist_id + '/top-tracks?country=US',
                                  headers=headers,)
@@ -91,12 +98,16 @@ def get_tracks(BASE_URL, headers, artist_id):
 
 
 def get_top_tracks(songs_data):
+    top_songs_list = []
     top_tracks = songs_data['tracks']
 
-    # # get 5 most popular songs
-    # for track in top_tracks[:limit]:
-    #     print(track['name'])
-    return top_tracks
+    # get 5 most popular songs
+    for track in top_tracks[:5]:
+        # print(track['name'])
+        top_songs_list.append(track['name'])
+    
+    print(top_songs_list)
+    return top_songs_list
 
 
 main()
