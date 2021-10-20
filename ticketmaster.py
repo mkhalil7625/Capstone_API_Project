@@ -3,6 +3,11 @@ from ticketmaster_config import api_key, artist
 
 
 def get_events(artist):
+
+    """
+    'Main' of the program, returns a dictionary with the following structure: 
+    [{'event_date' : date, 'event_time' : time, 'venue_name': venue_name, 'event_location' : location,  'link' : link_to_buy tickets}, ect... ]
+    """
     response = request_events(artist)
     json_data = get_json_from_response(response)
     if check_for_events(json_data):
