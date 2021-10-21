@@ -4,7 +4,7 @@ from model import Bookmarks, Cache
 import json
 
 
-"""WARNING This program DROPS ALL EXISTING TABLES in the database and repopulates the bookmarks and cache table with default data"""
+"""WARNING This program DROPS ALL EXISTING TABLES in the database and repopulates the bookmarks and cache table with a default data row"""
 
 # Example event list
 example_list = [
@@ -19,7 +19,6 @@ example_list = [
     {'event_date': '2021-10-23', 'event_time': '21:00:00', 'venue_name': 'Warehouse on Watts | W.O.W. ', 'event_location': 'Philadelphia, Pennsylvania', 'link_for_tickets': 'https://www.ticketweb.com/event/darius-alexander-dj-xtina-warehouse-on-watts-wow-tickets/11431875'}]
 
 event_dictionary = {}
-
 event_dictionary['events'] = example_list # Create new dictionary to store event list under the key 'events'
 
 
