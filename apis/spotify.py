@@ -12,7 +12,7 @@ import requests
 import os
 from config import SPOTIFY_API_KEY, SPOTIFY_CLIENT_SECRET
 
-def main(artist):
+def get_artist_music(artist):
     # Auth keys
     AUTH_URL = 'https://accounts.spotify.com/api/token'
     CLIENT_ID = SPOTIFY_API_KEY
@@ -76,9 +76,9 @@ def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
     return auth_response
 
 
-def get_input():
-    artist_name = input('Enter artist name: ')
-    return artist_name
+# def get_input():
+#     artist_name = input('Enter artist name: ')
+#     return artist_name
 
 
 def find_artist(BASE_URL, headers, artist_name):
