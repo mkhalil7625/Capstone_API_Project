@@ -10,13 +10,13 @@ Program will list 5 most popular songs from each of 3 famous albums from artist 
 """
 import requests
 import os
+from config import SPOTIFY_API_KEY, SPOTIFY_CLIENT_SECRET
 
-
-def main():
+def main(artist):
     # Auth keys
     AUTH_URL = 'https://accounts.spotify.com/api/token'
-    CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
-    CLIENT_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET')
+    CLIENT_ID = SPOTIFY_API_KEY
+    CLIENT_SECRET = SPOTIFY_CLIENT_SECRET
 
     auth_response = connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET)
 
@@ -34,14 +34,14 @@ def main():
     BASE_URL = 'https://api.spotify.com/v1/'
 
     # get input from user
-    artist_name = get_input()
+    # artist_name = get_input()
 
 
     """ make an API call using user's given artist name
     base url is used along with some parameters required by the API such as the type how many results needed
     or what type of search is being requested (artist, album, id, playlist, etc.)
     """
-    artist_data = find_artist(BASE_URL, headers, artist_name)
+    artist_data = find_artist(BASE_URL, headers, artist)
 
     artist_url = get_artist_url(artist_data)
 
@@ -57,7 +57,12 @@ def main():
 
     # get top 5 artist tracks
     top_tracks = get_top_tracks(songs_data)
-    return top_tracks
+
+    # Create list of top tracks, and spotify link.
+    tracks_and_link = top_tracks
+    tracks_and_link.append(artist_url)
+    # print(tracks_and_link)
+    return tracks_and_link
 
 
 def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
@@ -85,7 +90,7 @@ def find_artist(BASE_URL, headers, artist_name):
 
 
 def get_artist_url(artist_data):
-    print(artist_data['artists']['items'][0]['external_urls']['spotify'])
+    # print(artist_data['artists']['items'][0]['external_urls']['spotify'])
     return artist_data['artists']['items'][0]['external_urls']['spotify']
 
 
@@ -106,8 +111,8 @@ def get_top_tracks(songs_data):
         # print(track['name'])
         top_songs_list.append(track['name'])
     
-    print(top_songs_list)
+    # print(top_songs_list)
     return top_songs_list
 
 
-main()
+# main('Lady Gaga')
