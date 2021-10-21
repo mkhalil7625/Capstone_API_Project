@@ -33,6 +33,7 @@ class Cache(Model):
     song5 = CharField()
     spotify_link = CharField()
     events = CharField()
+    time_cached = IntegerField()
 
     class Meta:
         database = db

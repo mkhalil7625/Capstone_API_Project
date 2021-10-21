@@ -55,7 +55,8 @@ def populate_test_data(event_dictionary):
     song4 = 'Rain On Me (with Ariana Grande)',
     song5 = 'Poker Face',
     spotify_link = 'https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms',
-    events = json.dumps(event_dictionary))
+    events = json.dumps(event_dictionary),
+    time_cached = 123456789)
 
 
 populate_test_data(event_dictionary)
