@@ -1,1 +1,1 @@
-database_path = 'test_artist_info.sqlite'
+database_path = 'database/test_artist_info.sqlite'
