@@ -1,0 +1,1 @@
+database_path = 'test_artist_info.sqlite'
