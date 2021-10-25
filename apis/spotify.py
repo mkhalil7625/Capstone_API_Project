@@ -59,10 +59,12 @@ def get_artist_music(artist):
     top_tracks = get_top_tracks(songs_data)
 
     # Create list of top tracks, and spotify link.
-    tracks_and_link = top_tracks
-    tracks_and_link.append(artist_url)
-    # print(tracks_and_link)
-    return tracks_and_link
+    spotify_data = {}
+    spotify_data['artist_name'] = artist
+    spotify_data['genres'] = genres
+    spotify_data['sportify_page_url'] = artist_url
+    spotify_data['top_five_songs'] = top_tracks
+    return spotify_data
 
 
 def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
