@@ -1,0 +1,36 @@
+.event_container {
+    float:none;
+    width:100%;
+    display:block;
+    padding:12px;
+    margin:0;
+    box-sizing:border-box;
+    max-width: 700px;
+}
+
+.event_wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.date_time {
+    text-align: center;
+    font-size: 10px;
+    display:flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 50px;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    color:blue;
+}
+
+.event_date {
+    white-space:nowrap;
+}
+
+.event_time {
+    white-space:nowrap;
+}
