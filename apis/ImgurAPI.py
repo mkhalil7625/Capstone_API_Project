@@ -1,6 +1,5 @@
 from typing import cast
 import requests
-from pprint import pprint
 from imagurapiconfig import header
 def getpicture(artist):
 
@@ -14,5 +13,6 @@ def getpicture(artist):
   data = requests.request("GET", url, params=query, headers=header, data=payload, files=files).json()
   imagedatalist = data['data']
   firstimage = imagedatalist[0]
-  url = firstimage['link']
+  url = firstimage['images'][0]['link']
   return url
+  
