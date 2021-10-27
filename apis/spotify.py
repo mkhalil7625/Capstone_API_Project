@@ -10,13 +10,20 @@ Program will list 5 most popular songs from each of 3 famous albums from artist 
 """
 import requests
 import os
-from config import SPOTIFY_API_KEY, SPOTIFY_CLIENT_SECRET
+
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def get_artist_music(artist):
     # Auth keys
     AUTH_URL = 'https://accounts.spotify.com/api/token'
-    CLIENT_ID = SPOTIFY_API_KEY
-    CLIENT_SECRET = SPOTIFY_CLIENT_SECRET
+
+    CLIENT_ID = getenv('SPOTIFY_CLIENT_ID_KEY')
+    CLIENT_SECRET = getenv('SPOTIFY_CLIENT_SECRET_KEY')
+
 
     auth_response = connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET)
 
@@ -62,7 +69,9 @@ def get_artist_music(artist):
     spotify_data = {}
     spotify_data['artist_name'] = artist
     spotify_data['genres'] = genres
-    spotify_data['sportify_page_url'] = artist_url
+
+    spotify_data['spotify_page_url'] = artist_url
+
     spotify_data['top_five_songs'] = top_tracks
     return spotify_data
 
@@ -117,4 +126,5 @@ def get_top_tracks(songs_data):
     return top_songs_list
 
 
-# main('Lady Gaga')
+
+

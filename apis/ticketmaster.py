@@ -1,5 +1,11 @@
 import requests
-from ticketmaster_config import api_key, artist
+from os import getenv
+from dotenv import load_dotenv
+from pprint import pprint
+# from ticketmaster_config import api_key, artist
+
+load_dotenv()
+api_key=getenv('TICKETMASTER_KEY') # take environment variables from .env.
 
 
 def get_events(artist):
@@ -62,4 +68,7 @@ def check_for_events(data):
     else:
         return False
 
-# needed_event_data = get_events(artist)
+
+# needed_event_data = get_events('george strait')
+
+

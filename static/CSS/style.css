@@ -1,0 +1,52 @@
+.event_container {
+    float:none;
+    width:100%;
+    display:block;
+    padding:12px;
+    margin:0;
+    box-sizing:border-box;
+    max-width: 700px;
+}
+
+.event_wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.date_time {
+    text-align: center;
+    font-size: 10px;
+    display:flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 50px;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    color:blue;
+}
+
+.event_date {
+    white-space:nowrap;
+}
+
+.event_time {
+    white-space:nowrap;
+}
+
+.artist_image{
+    content-visibility: auto;
+    background-attachment: scroll;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    contain: strict;
+    height: 40vh;
+    min-height: 340px; 
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
