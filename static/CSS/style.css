@@ -34,3 +34,19 @@
 .event_time {
     white-space:nowrap;
 }
+
+.artist_image{
+    content-visibility: auto;
+    background-attachment: scroll;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    contain: strict;
+    height: 40vh;
+    min-height: 340px; 
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

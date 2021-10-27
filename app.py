@@ -1,6 +1,6 @@
 from flask import Flask,request, render_template, redirect
 # todo import database
-from apis import ticketmaster
+from apis import ticketmaster,spotify
 
 app = Flask(__name__)
 
@@ -10,9 +10,10 @@ def home_page():
 
 @app.route('/get-artist')
 def get_artist_info():
-    artist_name=request.args.get('search')
-    artist_events=ticketmaster.get_events(artist_name)
+    artist_name = request.args.get('search')
+    artist_spotify_info = spotify.get_artist_music(artist_name)
+    artist_events = ticketmaster.get_events(artist_spotify_info['artist_name'])
     # artist_url=
 
-    return render_template('artist.html',events=artist_events)
+    return render_template('artist.html',events=artist_events, artist_info=artist_spotify_info)
 
