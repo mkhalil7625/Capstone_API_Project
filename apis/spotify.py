@@ -1,23 +1,29 @@
 """
 Program to work with Spotify API
 Please use your own spotify CLIENT_ID and CLIENT_SECRET keys
+
 A call is made to API using artist/band name provided by user
 With data received, we can extract artist id and make a new call to another API endpoint
 to get artist albums, songs, profile urls, etc.
+
 Program will list 5 most popular songs from each of 3 famous albums from artist found
 """
 import requests
 import os
+
 from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def get_artist_music(artist):
     # Auth keys
     AUTH_URL = 'https://accounts.spotify.com/api/token'
+
     CLIENT_ID = getenv('SPOTIFY_CLIENT_ID_KEY')
     CLIENT_SECRET = getenv('SPOTIFY_CLIENT_SECRET_KEY')
+
 
     auth_response = connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET)
 
@@ -63,7 +69,9 @@ def get_artist_music(artist):
     spotify_data = {}
     spotify_data['artist_name'] = artist
     spotify_data['genres'] = genres
+
     spotify_data['spotify_page_url'] = artist_url
+
     spotify_data['top_five_songs'] = top_tracks
     return spotify_data
 
@@ -118,5 +126,5 @@ def get_top_tracks(songs_data):
     return top_songs_list
 
 
-# res=get_artist_music('Lady Gaga')
-# print(res['artist_name'])
+
+
