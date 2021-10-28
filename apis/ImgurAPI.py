@@ -14,8 +14,8 @@ def getpicture(artist):
   payload={}
   files={}
   header = {
-  'Authorization': 'Client-ID key'
-}
+    'Authorization': key
+  }
 
   data = requests.request("GET", url, params=query, headers=header, data=payload, files=files).json()
   imagedatalist = data['data']
