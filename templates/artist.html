@@ -1,3 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div id="background_image" class="artist_image">
+    <!-- placeholder -->
+<img src="/static/IMG/soccer-755825_640.jpg">
+</div>
+
+<div id="artist_info">
+    <h2>{{ artist_info["artist_name"] }}</h2>
+    <p>{{ artist_info["genres"] }}</p>
+    <p>Top Five Songs: </p>
+    <u>
+        {% for song in artist_info["top_five_songs"] %}
+            <li>{{ song }}</li>
+        {% endfor %}
+    </u>
+    <button>
+        <a href={{ artist_info["spotify_page_url"] }}>Spotify Account</a>
+    </button>
+
+</div>
+<div>
+    <div id="event_container">
+        <div class="event_list">
+            <h2>All Events</h2>
+            <div style="clear: both"></div>
+        </div>
+        <div class="event_list_content">
+            <div class="event_wrapper">
+                {% for event in events %}
+                <h3 class="event_venue">{{ event["venue_name"] }}</h3>
+                <div class="date_time">
+                <time class="event_date" >{{ event["event_date"] }}</time>
+                <time class="event_time" >{{ event["event_time"] }}</time>
+                </div>
+                <h5 class="event_location">{{ event["event_location"] }}</h5>
+                <div class="buy_ticket_button">
+                    <button type="button" class=tickets_button>
+                        <a href={{ event["link_for_tickets"]}}>Get Tickets</a>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>       
+        </div>
+    </div>
+</div>
+
+<div id="bookmark_button">
+    <form class="form" action="/save-artist" method="POST">
+        <!-- <label class="form-label" for="save">Save</label> -->
+        <button class="btn btn-primary" type="submit" class="form__submit">Save</button>
+    </form>
+</div>
+
+{% endblock %}
