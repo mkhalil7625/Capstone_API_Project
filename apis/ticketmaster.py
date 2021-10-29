@@ -1,5 +1,5 @@
 import requests
-from ticketmaster_config import api_key, artist
+# from ticketmaster_config import api_key, artist
 
 
 def get_events(artist):
