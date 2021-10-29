@@ -6,7 +6,7 @@ from pprint import pprint
 
 example_imgur_dictionary =  {'image_url': 'https://www.google.com'}
 
-example_spotify_dictionary = {'artist_name':'Lady Gaga', 'genres' : ['dance', 'pop'], 'spotify_page_url': 'https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms', 'top_five_songs': ['Shallow','Bad Romance', 'Always Remember Us This Way', 'Rain On Me (with Ariana Grande)', 'Poker Face']}
+example_spotify_dictionary = {'artist_name':'Lady RaRa', 'genres' : ['dance', 'pop'], 'spotify_page_url': 'https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms', 'top_five_songs': ['Shallow','Bad Romance', 'Always Remember Us This Way', 'Rain On Me (with Ariana Grande)', 'Poker Face']}
 
 example_ticketmaster_dictionary = {}
 example_ticketmaster_dictionary['events'] = [
@@ -31,18 +31,24 @@ def bookmark_data(artist_data):
     db = SqliteDatabase(database_path) # Get the path and connect to db
     db.connect()
     db.create_tables([Bookmarks])
-    new_bookmark = Bookmarks.create(
-    artist_name = artist_data['spotify']['artist_name'],
-    image_url = artist_data['imgur']['image_url'],
-    song1 = artist_data['spotify']['top_five_songs'][0],
-    song2 = artist_data['spotify']['top_five_songs'][1],
-    song3 = artist_data['spotify']['top_five_songs'][2],
-    song4 = artist_data['spotify']['top_five_songs'][3],
-    song5 = artist_data['spotify']['top_five_songs'][4],
-    spotify_link = artist_data['spotify']['spotify_page_url'],
-    events = json.dumps(artist_data['ticketmaster']['events'])
-    )
-    new_bookmark.save()
+
+    artist_name_in_bookmarks = Bookmarks.select().where(Bookmarks.artist_name == artist_data['spotify']['artist_name']) # Check db for duplicate data, do nothing if artist is found
+    if artist_name_in_bookmarks:
+        print('Artist already in bookmark')
+        pass
+    else: # Create a bookmark if the artist is not found
+        new_bookmark = Bookmarks.create(
+        artist_name = artist_data['spotify']['artist_name'],
+        image_url = artist_data['imgur']['image_url'],
+        song1 = artist_data['spotify']['top_five_songs'][0],
+        song2 = artist_data['spotify']['top_five_songs'][1],
+        song3 = artist_data['spotify']['top_five_songs'][2],
+        song4 = artist_data['spotify']['top_five_songs'][3],
+        song5 = artist_data['spotify']['top_five_songs'][4],
+        spotify_link = artist_data['spotify']['spotify_page_url'],
+        events = json.dumps(artist_data['ticketmaster']['events'])
+        )
+        new_bookmark.save()
 
 new_dictionary = combine_dictionaries(example_imgur_dictionary, example_spotify_dictionary, example_ticketmaster_dictionary)
 pprint(new_dictionary)
