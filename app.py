@@ -1,6 +1,6 @@
 from flask import Flask,request, render_template, redirect
 # todo import database
-from apis import ticketmaster,spotify, ImgurAPI
+from apis import ticketmaster, spotify, ImgurAPI
 from database import bookmark
 
 app = Flask(__name__)
@@ -24,8 +24,8 @@ def save_artist(artist_data):
     bookmark.bookmark_data(artist_data)
 
 
-@app.route('/display_all_bookmarks')
-    #List of all
+# @app.route('/display-all-bookmarks')
+#     #List of all
 
-@app.route('/error')
-    #Error handling
+# @app.route('/error')
+#     #Error handling
