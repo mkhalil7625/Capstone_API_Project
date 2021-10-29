@@ -9,8 +9,6 @@ to get artist albums, songs, profile urls, etc.
 Program will list 5 most popular songs from each of 3 famous albums from artist found
 """
 import requests
-import os
-
 from os import getenv
 from dotenv import load_dotenv
 
@@ -49,11 +47,8 @@ def get_artist_music(artist):
         artist_url = get_artist_url(artist_data)
 
         genres = artist_data['artists']['items'][0]['genres']
-        # print(f'Artist genres: {genres}')
 
         artist_id = artist_data['artists']['items'][0]['id']
-        # print(f'Artist id: {artist_id}')
-        # print()
 
         # get all songs from artist
         songs_data = get_tracks(BASE_URL, headers, artist_id)
@@ -70,6 +65,7 @@ def get_artist_music(artist):
 
         spotify_data['top_five_songs'] = top_tracks
         return spotify_data
+
     except requests.exceptions.HTTPError as errh: # https://www.nylas.com/blog/use-python-requests-module-rest-apis/#make-robust-api-requests - The resource I used to help make this
         print(errh)
     except requests.exceptions.ConnectionError as errc:
@@ -87,7 +83,6 @@ def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET,
     })
-
     return auth_response
 
 
@@ -100,7 +95,6 @@ def find_artist(BASE_URL, headers, artist_name):
 
 
 def get_artist_url(artist_data):
-    # print(artist_data['artists']['items'][0]['external_urls']['spotify'])
     return artist_data['artists']['items'][0]['external_urls']['spotify']
 
 
@@ -109,7 +103,6 @@ def get_tracks(BASE_URL, headers, artist_id):
                                  headers=headers,)
     songs_data = songs_request.json()
     return songs_data
-    # print(songs_data)
 
 
 def get_top_tracks(songs_data):
@@ -118,12 +111,7 @@ def get_top_tracks(songs_data):
 
     # get 5 most popular songs
     for track in top_tracks[:5]:
-        # print(track['name'])
         top_songs_list.append(track['name'])
     
-    # print(top_songs_list)
     return top_songs_list
-
-data = get_artist_music('Lady Gaga')
-print(data)
 
