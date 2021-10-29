@@ -40,5 +40,5 @@ def getpicture(artist):
   except requests.exceptions.RequestException as err:
     print(err)
 
-url = getpicture('cat')
-print(url)
+# url = getpicture('cat')
+# print(url)
