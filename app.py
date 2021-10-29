@@ -1,7 +1,7 @@
 from flask import Flask,request, render_template, redirect
 # todo import database
 from apis import ticketmaster
-from database import bookmark
+# from database import bookmark
 
 app = Flask(__name__)
 
