@@ -1,8 +1,6 @@
 import requests
 from os import getenv
 from dotenv import load_dotenv
-from pprint import pprint
-# from ticketmaster_config import api_key, artist
 
 load_dotenv()
 api_key=getenv('TICKETMASTER_KEY') # take environment variables from .env.
@@ -20,8 +18,9 @@ def get_events(artist):
         json_data = get_json_from_response(response)
         if check_for_events(json_data):
             event_list = get_event_list_from_json_data(json_data)
-            print(event_list)
-            return event_list
+            ticketmaster_data = {}
+            ticketmaster_data['events'] = event_list
+            return ticketmaster_data
         else:
             print('Sorry, there are no events currently scheduled for this artist in the USA')
             return None
@@ -77,8 +76,4 @@ def check_for_events(data):
         return True
     else:
         return False
-
-
-needed_event_data = get_events('Lady Gaga')
-print(needed_event_data)
 

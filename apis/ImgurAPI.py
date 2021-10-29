@@ -25,8 +25,12 @@ def getpicture(artist):
     imagedatalist = data['data']
     firstimage = imagedatalist[0]
     url = firstimage['images'][0]['link']
-    return url
-    
+
+    imgur_data = {} # Create dictionary that will contain data to return
+    imgur_data['image_link'] = url
+
+    return imgur_data
+
   except requests.exceptions.HTTPError as errh: # https://www.nylas.com/blog/use-python-requests-module-rest-apis/#make-robust-api-requests - The resource I used to help make this
     print(errh)
   except requests.exceptions.ConnectionError as errc:
