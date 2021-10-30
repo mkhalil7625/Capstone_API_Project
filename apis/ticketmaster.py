@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key=getenv('TICKETMASTER_KEY') # take environment variables from .env.
 
-
 def get_events(artist):
 
     """

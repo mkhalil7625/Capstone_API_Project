@@ -17,7 +17,8 @@
         {% endfor %}
     </u>
     <button>
-        <a href={{ artist_info["spotify_page_url"] }}>Spotify Account</a>
+
+        <a href="{{ artist_info['spotify_page_url'] }}">Spotify Account</a>
     </button>
 
 </div>
@@ -38,7 +39,9 @@
                 <h5 class="event_location">{{ event["event_location"] }}</h5>
                 <div class="buy_ticket_button">
                     <button type="button" class=tickets_button>
-                        <a href={{ event["link_for_tickets"]}}>Get Tickets</a>
+
+                        <a href="{{ event['link_for_tickets']}}">Get Tickets</a>
+
                     </button>
                 </div>
                 {% endfor %}
@@ -46,4 +49,14 @@
         </div>
     </div>
 </div>
+
+
+<div id="bookmark_button">
+    <form class="form" action="/save-artist" method="POST">
+        <input type="hidden" name="artist_name" value="{{ artist_info['artist_name'] }}">
+        <label class="form-label" for="save">Save</label>
+        <button class="btn btn-primary" type="submit" class="form__submit">Save</button>
+    </form>
+</div>
+
 {% endblock %}
