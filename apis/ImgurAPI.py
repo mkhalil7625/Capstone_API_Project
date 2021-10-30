@@ -39,6 +39,3 @@ def getpicture(artist):
     print(errt)
   except requests.exceptions.RequestException as err:
     print(err)
-
-url = getpicture('george strait')
-print(url['image_link'])
