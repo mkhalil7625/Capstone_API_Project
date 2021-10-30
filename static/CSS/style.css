@@ -131,7 +131,16 @@ header .navigation__item a {
 }
 
 /* Artist Page */
+.artist_card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(235, 233, 233);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 .artist_image {
+  width: 30%;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
@@ -143,63 +152,62 @@ header .navigation__item a {
 }
 
 #artist_info {
+  width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-top: 1rem;
-  background-color: tomato;
-  padding: 1rem;
-}
-
-#artist_info div {
-  background-color: grey;
-  /* width: 30%; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #artist_info h2 {
   text-transform: capitalize;
   font-weight: bold;
-  font-size: 2.8rem;
-  color: whitesmoke;
+  font-size: 3rem;
+  color: tomato;
+  margin-bottom: -5px;
 }
 #artist_info h4 {
-  color: white;
+  margin-top: 1rem;
+  size: 2rem;
+  font-weight: bold;
+  color: tomato;
 }
 #artist_info ul li {
   text-decoration: none;
-  /* color: whitesmoke; */
 }
 
 #artist_info button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  color: tomato;
+  background-color: tomato;
+  color: white;
   border: none;
-  outline: 2px solid white;
+  outline: 2px solid tomato;
   outline-offset: 2px;
   border-radius: 10px;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 #artist_info button a {
-  color: tomato;
+  color: white;
 }
 #artist_info button:hover,
 #artist_info button a:hover {
-  background-color: white;
-  color: tomato;
+  background-color: tomato;
+  color: white;
   font-weight: bold;
 }
 
 /* Events */
+#event_container h2 {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
 #event_container,
 .event_wrapper {
   display: flex;
@@ -207,7 +215,7 @@ header .navigation__item a {
   justify-content: center;
   align-items: center;
   /* padding: 1rem; */
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 #event_container h2 {

@@ -2,16 +2,17 @@
 
 {% block content %}
 
-<div id="background_image" class="artist_image">
-    <!-- placeholder -->
-    <img src="/static/IMG/soccer-755825_640.jpg">
-</div>
-
-<div id="artist_info">
+<div class="artist_card d-flex">
+    <div id="background_image" class="artist_image">
+        <!-- placeholder -->
+        <img src="/static/IMG/soccer-755825_640.jpg">
+    </div>
+    
+    <div id="artist_info">
         <h2>{{ artist_info["artist_name"] }}</h2>
         <p>{{ artist_info["genres"] }}</p>
-    
-        <h4 class="songs_title">Top Five Songs: </h4>
+        
+        <h4 class="songs_title">Top 5 Songs: </h4>
         <ul>
             {% for song in artist_info["top_five_songs"] %}
             <li>{{ song }}</li>
@@ -19,9 +20,8 @@
         </ul>
         <button>
             <a href={{ artist_info["spotify_page_url"] }} target="_blank">Spotify Account</a>
-        </button>
-    
-    
+        </button>    
+    </div>
 </div>
 <div>
     <div id="event_container">
