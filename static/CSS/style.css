@@ -35,7 +35,7 @@
     white-space:nowrap;
 }
 
-.artist_image{
+/* .artist_image{
     content-visibility: auto;
     background-attachment: scroll;
     background-position: 50% 15%;
@@ -49,4 +49,11 @@
     position: absolute;
     top: 0;
     width: 100%;
+} */
+.artist-name{
+    text-transform: uppercase;
+    color:blue
+}
+.capitalize{
+    text-transform: capitalize;
 }

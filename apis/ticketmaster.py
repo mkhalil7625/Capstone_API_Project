@@ -76,3 +76,7 @@ def check_for_events(data):
     else:
         return False
 
+events=get_events('george strait')
+# print(events['events'])
+for event in events['events']:
+    print(event)
