@@ -18,7 +18,7 @@
             {% endfor %}
         </ul>
         <button>
-            <a href={{ artist_info["spotify_page_url"] }}>Spotify Account</a>
+            <a href={{ artist_info["spotify_page_url"] }} target="_blank">Spotify Account</a>
         </button>
     
     
@@ -40,7 +40,7 @@
                 <h5 class="event_location">{{ event["event_location"] }}</h5>
                 <div class="buy_ticket_button">
                     <button type="button" class=tickets_button>
-                        <a href={{ event["link_for_tickets"]}}>Get Tickets</a>
+                        <a href={{ event["link_for_tickets"]}} target="_blank">Get Tickets</a>
                     </button>
                 </div>
                 {% endfor %}
