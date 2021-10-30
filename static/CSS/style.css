@@ -203,11 +203,6 @@ header .navigation__item a {
 }
 
 /* Events */
-#event_container h2 {
-  margin-top: -1rem;
-  margin-bottom: 1rem;
-}
-
 #event_container,
 .event_wrapper {
   display: flex;
