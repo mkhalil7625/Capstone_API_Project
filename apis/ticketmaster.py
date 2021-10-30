@@ -1,8 +1,6 @@
 import requests
 from os import getenv
 from dotenv import load_dotenv
-from pprint import pprint
-# from ticketmaster_config import api_key, artist
 
 load_dotenv()
 api_key=getenv('TICKETMASTER_KEY') # take environment variables from .env.
@@ -14,15 +12,26 @@ def get_events(artist):
     'Main' of the program, returns a dictionary with the following structure: 
     [{'event_date' : date, 'event_time' : time, 'venue_name': venue_name, 'event_location' : location,  'link' : link_to_buy tickets}, ect... ]
     """
-    response = request_events(artist)
-    json_data = get_json_from_response(response)
-    if check_for_events(json_data):
-        event_list = get_event_list_from_json_data(json_data)
-        print(event_list)
-        return event_list
-    else:
-        print('Sorry, there are no events currently scheduled for this artist in the USA')
-        return None
+    try:
+        response = request_events(artist)
+        response.raise_for_status()
+        json_data = get_json_from_response(response)
+        if check_for_events(json_data):
+            event_list = get_event_list_from_json_data(json_data)
+            ticketmaster_data = {}
+            ticketmaster_data['events'] = event_list
+            return ticketmaster_data
+        else:
+            print('Sorry, there are no events currently scheduled for this artist in the USA')
+            return None
+    except requests.exceptions.HTTPError as errh: # https://www.nylas.com/blog/use-python-requests-module-rest-apis/#make-robust-api-requests - The resource I used to help make this
+        print(errh)
+    except requests.exceptions.ConnectionError as errc:
+        print(errc)
+    except requests.exceptions.Timeout as errt:
+        print(errt)
+    except requests.exceptions.RequestException as err:
+        print(err)
 
 
 def request_events(artist):
@@ -67,8 +76,4 @@ def check_for_events(data):
         return True
     else:
         return False
-
-
-# needed_event_data = get_events('george strait')
-
 
