@@ -8,14 +8,14 @@ def getpicture(artist):
     load_dotenv()
     key = getenv('IMGUR_CLIENT_ID')
 
-    url = "https://api.imgur.com/3/gallery/search/top/year/1?"
+    url = "https://api.imgur.com/3/gallery/search/top/year/?"
     query = {'q': artist, 'q_type' : 'jpg'}
 
 
     payload={}
     files={}
     header = {
-      'Authorization': key
+      'Authorization': 'Client-ID '+key
     }
 
     response = requests.request("GET", url, params=query, headers=header, data=payload, files=files)
@@ -39,6 +39,3 @@ def getpicture(artist):
     print(errt)
   except requests.exceptions.RequestException as err:
     print(err)
-
-# url = getpicture('cat')
-# print(url)

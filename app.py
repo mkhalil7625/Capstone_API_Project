@@ -1,6 +1,7 @@
 from flask import Flask,request, render_template, redirect
 # todo import database
-from apis import ticketmaster,spotify
+from apis import ticketmaster,spotify, ImgurAPI
+import os
 
 
 app = Flask(__name__)
@@ -32,3 +33,7 @@ def save_artist():
 
 # @app.route('/error')
 #     #Error handling
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)

@@ -2,18 +2,38 @@
 
 {% block content %}
 
-<div id="background_image" class="artist_image">
-    <!-- placeholder -->
-<img src="/static/IMG/soccer-755825_640.jpg">
+<div id="background_image" class="artist_image" >
+    {% if artist_image["image_link"] %}
+
+    <img src="{{ artist_image['image_link'] }}" width="400px" height="300px" referrerpolicy="no-referrer">
+    
+    {% else %}
+    
+    <h2>Sorry, image is not available</h2>
+    
+    {% endif %}
 </div>
 
 <div id="artist_info">
-    <h2>{{ artist_info["artist_name"] }}</h2>
-    <p>{{ artist_info["genres"] }}</p>
+
+    <h2 class="artist-name">
+        {{ artist_info["artist_name"] }}
+    </h2>
+
+    {% if artist_info["genres"] %}
+    <p class="capitalize">
+        Genre: {{ artist_info["genres"][0] }}
+    </p>
+
+    {% else %}
+    <p>Genre: No Info Available</p>
+
+    {% endif %}
+
     <p>Top Five Songs: </p>
     <u>
         {% for song in artist_info["top_five_songs"] %}
-            <li>{{ song }}</li>
+            <li class="capitalize">{{ song }}</li>
         {% endfor %}
     </u>
     <button>
@@ -28,9 +48,10 @@
             <h2>All Events</h2>
             <div style="clear: both"></div>
         </div>
+        {% if events['events'] %}
         <div class="event_list_content">
             <div class="event_wrapper">
-                {% for event in events %}
+                {% for event in events['events'] %}
                 <h3 class="event_venue">{{ event["venue_name"] }}</h3>
                 <div class="date_time">
                 <time class="event_date" >{{ event["event_date"] }}</time>
@@ -47,6 +68,10 @@
                 {% endfor %}
             </div>       
         </div>
+        {% else %}
+        <p>Sorry, there is no events info available</p>
+
+        {%endif %}
     </div>
 </div>
 
