@@ -4,22 +4,24 @@
 
 <div id="background_image" class="artist_image">
     <!-- placeholder -->
-<img src="/static/IMG/soccer-755825_640.jpg">
+    <img src="/static/IMG/soccer-755825_640.jpg">
 </div>
 
 <div id="artist_info">
-    <h2>{{ artist_info["artist_name"] }}</h2>
-    <p>{{ artist_info["genres"] }}</p>
-    <p>Top Five Songs: </p>
-    <u>
-        {% for song in artist_info["top_five_songs"] %}
+        <h2>{{ artist_info["artist_name"] }}</h2>
+        <p>{{ artist_info["genres"] }}</p>
+    
+        <h4 class="songs_title">Top Five Songs: </h4>
+        <ul>
+            {% for song in artist_info["top_five_songs"] %}
             <li>{{ song }}</li>
-        {% endfor %}
-    </u>
-    <button>
-        <a href={{ artist_info["spotify_page_url"] }}>Spotify Account</a>
-    </button>
-
+            {% endfor %}
+        </ul>
+        <button>
+            <a href={{ artist_info["spotify_page_url"] }}>Spotify Account</a>
+        </button>
+    
+    
 </div>
 <div>
     <div id="event_container">
