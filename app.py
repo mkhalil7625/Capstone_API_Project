@@ -2,15 +2,21 @@ from flask import Flask,request, render_template, redirect
 # todo import database
 from apis import ticketmaster,spotify, ImgurAPI
 import os
+from flask_caching import Cache
 
 
 app = Flask(__name__)
+# caching setup
+cache=Cache(config={'CACHE_TYPE':'SimpleCache'})
+cache.init_app(app)
+
 
 @app.route('/')
 def home_page():
     return render_template("home.html")
 
 @app.route('/get-artist')
+@cache.cached(timeout=100)
 def get_artist_info():
     artist_name = request.args.get('search')
     artist_spotify_info = spotify.get_artist_music(artist_name)
