@@ -39,3 +39,4 @@ def getpicture(artist):
     print(errt)
   except requests.exceptions.RequestException as err:
     print(err)
+
