@@ -146,9 +146,10 @@ header .navigation__item a {
   margin-top: 1rem;
 }
 .artist_image img {
-  width: 200px;
+  width: 250px;
   height: 250px;
   border-radius: 50%;
+  object-fit: fill;
 }
 
 #artist_info {
@@ -177,7 +178,8 @@ header .navigation__item a {
   text-decoration: none;
 }
 
-#artist_info button {
+#artist_info button,
+#bookmark_button button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,11 +194,13 @@ header .navigation__item a {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-#artist_info button a {
+#artist_info button a,
+#bookmark_button button {
   color: white;
 }
 #artist_info button:hover,
-#artist_info button a:hover {
+#artist_info button a:hover,
+#bookmark_button button:hover {
   background-color: tomato;
   color: white;
   font-weight: bold;
@@ -252,4 +256,12 @@ header .navigation__item a {
   background-color: tomato;
   color: white;
   font-weight: bold;
+}
+
+/* Bookmarks */
+#bookmark_button {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
 }
