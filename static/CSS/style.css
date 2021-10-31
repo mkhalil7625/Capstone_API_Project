@@ -1,52 +1,219 @@
-.event_container {
-    float:none;
-    width:100%;
-    display:block;
-    padding:12px;
-    margin:0;
-    box-sizing:border-box;
-    max-width: 700px;
+:root {
+  --main-color: slateblue;
 }
 
+/* Homepage */
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 1rem;
+  background-color: black;
+}
+
+header .navigation__item {
+  list-style: square;
+  color: lightblue;
+}
+header .navigation__item a {
+  color: whitesmoke;
+}
+
+.jumbotron {
+  display: grid;
+  place-items: center;
+  background-color: var(--main-color);
+  height: 100vh;
+}
+
+.jumbotron .container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+}
+.jumbotron .jumbotron-heading {
+  text-transform: uppercase;
+  color: whitesmoke;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.jumbotron .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.form #search {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 38px;
+  border: 1px solid whitesmoke;
+  outline: none;
+  background-color: lightcyan;
+  border-radius: 10px;
+  caret-color: black;
+  color: black;
+}
+.form #search::placeholder {
+  color: rgb(119, 118, 118);
+}
+.form .btn {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: var(--main-color);
+  border: none;
+  outline: 2px solid white;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+.form button:hover {
+  background-color: white;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* Artist Page */
+.artist_card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(235, 233, 233);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.artist_image {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.artist_image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+
+#artist_info {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#artist_info h2 {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 3rem;
+  color: var(--main-color);
+  margin-bottom: -5px;
+}
+#artist_info h4 {
+  margin-top: 1rem;
+  size: 2rem;
+  font-weight: bold;
+  color: var(--main-color);
+}
+#artist_info ul li {
+  text-decoration: none;
+}
+
+#artist_info button,
+#bookmark_button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+#artist_info button a,
+#bookmark_button button {
+  color: white;
+}
+#artist_info button:hover,
+#artist_info button a:hover,
+#bookmark_button button:hover {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+}
+
+/* Events */
+#event_container,
 .event_wrapper {
-    width: 100%;
-    box-sizing: border-box;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 1rem; */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
-.date_time {
-    text-align: center;
-    font-size: 10px;
-    display:flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    width: 50px;
-    -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-box-pack: center;
-    color:blue;
+#event_container h2 {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 2.8rem;
 }
 
-.event_date {
-    white-space:nowrap;
+.event_list_content {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+}
+.event_list_content .event_location {
+  color: var(--main-color);
+}
+.event_list_content .buy_ticket_button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.event_list_content .buy_ticket_button button a {
+  background-color: var(--main-color);
+  color: white;
+}
+.event_list_content .buy_ticket_button button:hover,
+.event_list_content .buy_ticket_button button a:hover {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
 }
 
-.event_time {
-    white-space:nowrap;
-}
-
-.artist_image{
-    content-visibility: auto;
-    background-attachment: scroll;
-    background-position: 50% 15%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    contain: strict;
-    height: 40vh;
-    min-height: 340px; 
-    display: block;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+/* Bookmarks */
+#bookmark_button {
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
 }

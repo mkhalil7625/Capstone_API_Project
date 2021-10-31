@@ -1,15 +1,19 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <main>
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Search for your favorite artists or bands</h1>
-            <form class="form" action="/get-artist" method="GET">
-                <label class="form-label" for="search">Search</label>
-                <textarea name="search" id="search" class="form__textarea"></textarea>
-                <button class=" btn btn-primary"type="submit" class="form__submit">Search</button>
-            </form>
-        </div>
-    </section>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Search for your favorite artist or band</h1>
+      <form class="form" action="/get-artist" method="GET">
+        <!-- <label class="form-label" for="search">Enter artist name</label> -->
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Enter artist/band name"
+        />
+        <button class="btn" type="submit" class="form__submit">Search</button>
+      </form>
+    </div>
+  </section>
 </main>
 {% endblock %}
