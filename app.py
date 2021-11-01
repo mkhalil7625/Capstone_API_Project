@@ -1,7 +1,8 @@
 from flask import Flask,request, render_template, redirect
-# todo import database
+import bookmark
 from apis import ticketmaster,spotify, ImgurAPI
 import os
+import json
 
 
 app = Flask(__name__)
@@ -10,7 +11,7 @@ app = Flask(__name__)
 def home_page():
     return render_template("home.html")
 
-@app.route('/get-artist')
+@app.route('/get-artist', methods=['GET'])
 def get_artist_info():
     artist_name = request.args.get('search')
     artist_spotify_info = spotify.get_artist_music(artist_name)
@@ -28,8 +29,11 @@ def save_artist():
     return redirect('/display-all-bookmarks')
 
 
-# @app.route('/display-all-bookmarks')
-#     #List of all
+@app.route('/display-all-bookmarks', methods=['GET'])
+def display_all_bookmarks():
+    bookmarks = bookmark.get_all_bookmark()
+    # parsed_bookmarks=JSON.parse
+    return render_template('bookmarks.html',bookmarks=bookmarks)
 
 # @app.route('/error')
 #     #Error handling
