@@ -1,9 +1,11 @@
-from flask import Flask,request, render_template, redirect
-# todo import database
+from flask import Flask,request, render_template, redirect, jsonify
+# from .database import model
+import bookmarks
 from apis import ticketmaster,spotify, ImgurAPI
 import os
 from flask_caching import Cache
-
+import json
+from playhouse.shortcuts import model_to_dict
 
 app = Flask(__name__)
 # caching setup
@@ -16,7 +18,7 @@ def home_page():
     return render_template("home.html")
 
 @app.route('/get-artist')
-@cache.cached(timeout=100)
+@cache.cached(timeout=5)
 def get_artist_info():
     artist_name = request.args.get('search')
     artist_spotify_info = spotify.get_artist_music(artist_name)
@@ -28,15 +30,23 @@ def get_artist_info():
 @app.route('/save-artist')
 def save_artist():
     # Ask database to save artist
-    # bookmark.bookmark_data(artist_data)
+    artist_name = request.args.get("artist_name")
+    image_link = request.args.get("image_link")
+    # genres = request.args.get("genres")
+    spotify_page_url = request.args.get("spotify_page_url")
+   
 
-    print(request.data.get('artist_name'))
+    bookmarks.bookmark_data(artist_name,image_link,spotify_page_url)
+    # print(request.data.get('artist_name'))
     return redirect('/display-all-bookmarks')
 
 
-# @app.route('/display-all-bookmarks')
-#     #List of all
+@app.route('/display-all-bookmarks')
+def display_all_bookmarks():
+    all_bookmarks =  bookmarks.get_all_bookmarks()
+    # parsed_bookmarks=JSON.parse
 
+    return render_template('bookmarks.html', bookmarks=all_bookmarks)
 # @app.route('/error')
 #     #Error handling
 
