@@ -67,12 +67,35 @@
 </div>
 
 <div id="bookmark_button">
-  <form class="form" action="/save-artist" method="POST">
+  <form class="form" action="/save-artist" >
     <input
       type="hidden"
       name="artist_name"
       value="{{ artist_info['artist_name'] }}"
     />
+    <input
+      type="hidden"
+      name="image_link" 
+      value="{{ artist_image['image_link'] }}"
+    />
+    <input
+      type="hidden"
+      name="genres"
+      value="{{ artist_info['genres'] }}"
+    />
+    <!-- {% for song in artist_info["top_five_songs"] %}
+    <input
+      type="hidden"
+      name="song1"
+      value="{{ song }}"
+    />
+    {% endfor  %} -->
+    <input
+      type="hidden"
+      name="spotify_page_url"
+      value="{{ artist_info['spotify_page_url'] }}"
+    /> 
+
     <!-- <label class="form-label" for="save">Save</label> -->
     <button class="btn btn-primary" type="submit" class="form__submit">
       Save

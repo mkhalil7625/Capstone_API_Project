@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+<!-- 
+{% block title %}
+List of Saved Artists/Bands
+{% endblock %} -->
+
+{% block content %}
+
+    {% if not bookmarks %}
+
+    <div>
+        <div class="text-center">
+            <br>
+            <h1 class="text-center my_title">Your bookmarks list is empty</h1>
+            <br>
+            <p class="text-center">
+                Please click <a href="/">here</a> to search for your favourite artists.
+            </p>
+        </div>
+    </div>
+
+    {% else %}
+    <div>
+        <div class="text-center">
+            <br>
+            <h1 class="text-center my_title">
+                Your List
+            </h1>
+            <br>
+        </div>
+    </div>
+        {% for bookmark in bookmarks %}
+            <form action="/get-artist" method="get">
+                <ul>
+                <li> {{ bookmark.artist_name }}</li>
+                <img src="{{ bookmark.image_url }}" referrerpolicy="no-referrer" class="artist_image"/>
+                <input type="hidden" name="search" value="{{ bookmark['artist_name'] }}">
+                <button type="submit">Show</button>
+                </ul>
+            </form>
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}

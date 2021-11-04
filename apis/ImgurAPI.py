@@ -8,7 +8,7 @@ def getpicture(artist):
     load_dotenv()
     key = getenv('IMGUR_CLIENT_ID')
 
-    url = "https://api.imgur.com/3/gallery/search/top/year/?"
+    url = "https://api.imgur.com/3/gallery/search/viral/year/?"
     query = {'q': artist, 'q_type' : 'jpg'}
 
 
