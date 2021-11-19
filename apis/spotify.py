@@ -1,4 +1,7 @@
 """
+
+This is a docstring - explain a module, a class, a method, function.  
+
 Program to work with Spotify API
 Please use your own spotify CLIENT_ID and CLIENT_SECRET keys
 
@@ -8,6 +11,7 @@ to get artist albums, songs, profile urls, etc.
 
 Program will list 5 most popular songs from each of 3 famous albums from artist found
 """
+
 import requests
 from os import getenv
 from dotenv import load_dotenv
@@ -38,10 +42,11 @@ def get_artist_music(artist):
         # base URL of all Spotify API endpoints
         BASE_URL = 'https://api.spotify.com/v1/'
 
-        """ make an API call using user's given artist name
-        base url is used along with some parameters required by the API such as the type how many results needed
-        or what type of search is being requested (artist, album, id, playlist, etc.)
-        """
+        # use a regular comment here 
+        # make an API call using user's given artist name
+        # base url is used along with some parameters required by the API such as the type how many results needed
+        # or what type of search is being requested (artist, album, id, playlist, etc.)
+        
         artist_data = find_artist(BASE_URL, headers, artist)
 
         artist_url = get_artist_url(artist_data)
@@ -57,6 +62,8 @@ def get_artist_music(artist):
         top_tracks = get_top_tracks(songs_data)
 
         # Create list of top tracks, and spotify link.
+
+        # separate this into a new functionm
         spotify_data = {}
         spotify_data['artist_name'] = artist
         spotify_data['genres'] = genres
@@ -64,8 +71,12 @@ def get_artist_music(artist):
         spotify_data['spotify_page_url'] = artist_url
 
         spotify_data['top_five_songs'] = top_tracks
+        # end of code that should be in a separate function
+
+        
         return spotify_data
 
+    # also handle JSON parsing exceptions 
     except requests.exceptions.HTTPError as errh: # https://www.nylas.com/blog/use-python-requests-module-rest-apis/#make-robust-api-requests - The resource I used to help make this
         print(errh)
     except requests.exceptions.ConnectionError as errc:
@@ -87,7 +98,9 @@ def connect_to_API(AUTH_URL, CLIENT_ID, CLIENT_SECRET):
 
 
 def find_artist(BASE_URL, headers, artist_name):
-    artist = requests.get(BASE_URL + 'search?',
+
+    # need error handling here too 
+    artist = requests.get(BASE_URL + 'search',  # ? not needed, requests will add it when it adds the params 
                           headers=headers,
                           params={'query': artist_name, 'offset': 0, 'limit': 1, 'type': 'artist'})
     artist_data = artist.json()
@@ -95,10 +108,14 @@ def find_artist(BASE_URL, headers, artist_name):
 
 
 def get_artist_url(artist_data):
+
+    # need error handling here too. What if the JSON is not in the expected format? 
     return artist_data['artists']['items'][0]['external_urls']['spotify']
 
 
 def get_tracks(BASE_URL, headers, artist_id):
+
+    # need error handling here too 
     songs_request = requests.get(BASE_URL + 'artists/' + artist_id + '/top-tracks?country=US',
                                  headers=headers,)
     songs_data = songs_request.json()

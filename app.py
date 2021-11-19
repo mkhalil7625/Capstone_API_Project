@@ -13,6 +13,11 @@ cache=Cache(config={'CACHE_TYPE':'SimpleCache'})
 cache.init_app(app)
 
 
+# Many of these routes need to anticpate errors and take some action - for example,
+# redirect the user to an error page.  Differentiate between "Artist not found" type errors, 
+# where the user can try another search, and application errors like API server down or code 
+# error, that you would show a general 'sorry something went wrong' type message.
+
 @app.route('/')
 def home_page():
     return render_template("home.html")
@@ -23,7 +28,7 @@ def get_artist_info():
     artist_name = request.args.get('search')
     artist_spotify_info = spotify.get_artist_music(artist_name)
     artist_events = ticketmaster.get_events(artist_spotify_info['artist_name'])
-    artist_url = ImgurAPI.getpicture(artist_spotify_info['artist_name'])
+    artist_url = ImgurAPI.get_picture(artist_spotify_info['artist_name'])
 
     return render_template('artist.html',events=artist_events, artist_info=artist_spotify_info, artist_image=artist_url)
 

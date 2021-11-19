@@ -23,6 +23,8 @@ def get_events(artist):
         else:
             print('Sorry, there are no events currently scheduled for this artist in the USA')
             return None
+
+    # notes on error handling at GitHub
     except requests.exceptions.HTTPError as errh: # https://www.nylas.com/blog/use-python-requests-module-rest-apis/#make-robust-api-requests - The resource I used to help make this
         print(errh)
     except requests.exceptions.ConnectionError as errc:
@@ -38,6 +40,8 @@ def request_events(artist):
     """
     Requests a response from ticketmaster, using the artist given as a keyword, and an api_key from a configuration file.
     """
+
+    # query parameters - as are used in the spotify module - would make this cleaner 
     url = f'https://app.ticketmaster.com/discovery/v2/events.json?keyword={artist}&countryCode=US&apikey={api_key}'
     response = requests.get(url)
     return response
@@ -56,6 +60,7 @@ def get_event_list_from_json_data(data):
     raw_event_data = data['_embedded']['events']
 
     for i in raw_event_data:
+        # what if the JSOM is not in the expected format?
         event_dictionary = {}
         event_dictionary['event_date'] = i['dates']['start']['localDate']
         event_dictionary['event_time'] = i['dates']['start']['localTime']
