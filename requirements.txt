@@ -32,7 +32,7 @@ Pygments==2.9.0
 pylint==2.6.0
 python-dateutil==2.8.1
 python-dotenv==0.19.1
-pywin32==301
+pywin32==301   <--- this errors for mac users. What is this needed for in your project?
 pyzmq==22.1.0
 requests==2.26.0
 six==1.15.0
